@@ -43,9 +43,9 @@ public class twoPointerTest {
         int count = 0;
         int startIndex = 0;
         int endIndex = n-1;
-
         int[] a = new int[n];
         StringTokenizer st = new StringTokenizer(reader.readLine());
+
         for (int i = 0; i < n; i++) {
             a[i] = Integer.parseInt(st.nextToken());
         }
