@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -75,5 +76,28 @@ public class twoPointerTest {
         }
     }
         System.out.println("결과 = "+result);
+    }
+
+    @Test
+    public int[] twoSum_167(int[] numbers, int target) {
+        int startIndex = 0;
+        int endIndex = numbers.length-1;
+        int[] result = new int[2];
+        boolean loop=true;
+
+        while(loop){
+            if(numbers[startIndex]+numbers[endIndex]==target){
+                result[0]=startIndex+1;
+                result[1]=endIndex+1;
+                loop=false;
+            } else if (numbers[startIndex]+numbers[endIndex]<target) {
+                startIndex++;
+            }
+            else {
+                endIndex--;
+            }
+        }
+        return result;
+
     }
 }
