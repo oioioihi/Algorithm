@@ -63,4 +63,17 @@ public class twoPointerTest {
         System.out.println(count);
 
     }
+
+    @Test
+    void Palindrome_125() {
+        String s = "fghjk";
+        String s1 = s.toLowerCase().replaceAll("[^a-zA-Z0-9]", "");
+        boolean result = true;
+        for (int i = 0; i < s1.length(); i++) {
+            if (s1.charAt(i) != s1.charAt(s1.length()-1-i)){
+                result = false;
+        }
+    }
+        System.out.println("결과 = "+result);
+    }
 }
