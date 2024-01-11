@@ -100,4 +100,21 @@ public class twoPointerTest {
         return result;
 
     }
+
+    @Test
+    public int container_With_Most_Water_11(int[] height) {
+
+        int startIndex = 0;
+        int endIndex = height.length-1;
+        int max = 0;
+        while(startIndex<endIndex){
+            max = Math.max(max, (endIndex-startIndex)*Math.min(height[startIndex],height[endIndex]));
+            if (height[startIndex] < height[endIndex]) {
+                startIndex++;
+            }else {
+                endIndex--;
+            }
+        }
+            return max;
+    }
 }
