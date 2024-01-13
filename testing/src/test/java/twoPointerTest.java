@@ -117,4 +117,15 @@ public class twoPointerTest {
         }
             return max;
     }
+
+    @Test
+    public boolean isSubsequence_392(String s, String t) {
+
+        int pointer1 = 0;
+        int pointer2 = 0;
+        char[] chars = s.toCharArray();
+        char[] word = t.toCharArray();
+
+
+    }
 }
