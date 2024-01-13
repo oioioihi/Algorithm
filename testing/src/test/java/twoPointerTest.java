@@ -126,6 +126,15 @@ public class twoPointerTest {
         char[] chars = s.toCharArray();
         char[] word = t.toCharArray();
 
-
+        while(pointer2<word.length){
+            if(chars[pointer1]==word[pointer2]){
+                pointer1++;
+                pointer2++;
+            }
+            else {
+                pointer2++;
+            }
+        }
+        return pointer1 ==chars.length-1;
     }
 }
