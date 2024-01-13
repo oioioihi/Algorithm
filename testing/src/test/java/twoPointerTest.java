@@ -118,23 +118,36 @@ public class twoPointerTest {
             return max;
     }
 
-    @Test
-    public boolean isSubsequence_392(String s, String t) {
 
+    public boolean isSubsequence_392(String s, String t) {
         int pointer1 = 0;
         int pointer2 = 0;
         char[] chars = s.toCharArray();
         char[] word = t.toCharArray();
+        boolean result = false;
 
-        while(pointer2<word.length){
-            if(chars[pointer1]==word[pointer2]){
+        if(chars.length==0) {
+            result = true;
+            return result;
+        }else if(word.length ==0){
+            return result;
+        }
+        while (pointer1 < chars.length && pointer2 < word.length) {
+            if (chars[pointer1] == word[pointer2]) {
                 pointer1++;
                 pointer2++;
-            }
-            else {
+            } else {
                 pointer2++;
             }
         }
-        return pointer1 ==chars.length-1;
+        result = pointer1 == chars.length;
+
+        return result;
     }
+
+    @Test
+    void test(){
+        isSubsequence_392("b","abc");
+    }
+
 }
