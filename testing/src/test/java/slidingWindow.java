@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class slidingWindow {
@@ -21,11 +22,11 @@ public class slidingWindow {
         checkSecret = 0;
         char[] inputArray;
         inputArray = reader.readLine().toCharArray();
-        st = new StringTokenizer(reader.readLine());
 
+        st = new StringTokenizer(reader.readLine());
         for (int i = 0; i <4 ; i++) {
             checkArray[i] = Integer.parseInt(st.nextToken());
-            if(checkArray[i]== 0){
+            if(checkArray[i] == 0){
                 checkSecret++;
             }
         }
@@ -51,6 +52,8 @@ public class slidingWindow {
         reader.close();
     }
 
+
+
     private void remove(char c) {
         switch (c){
             case 'A':
@@ -70,6 +73,30 @@ public class slidingWindow {
                 currentArray[3]--;
                 break;
         }
+    }
+
+    public int minSubArrayLen_209(int target, int[] nums) {
+        //Arrays.sort(nums);
+        int pointer = nums.length-1;
+        int sum = nums[pointer];
+        int result;
+        while(sum<target){
+            pointer--;
+            if(pointer < 0){
+                break;
+            }
+            sum +=nums[pointer];
+        }
+
+        return pointer<0?0:nums.length-pointer;
+    }
+
+    @Test
+    void testing (){
+        int target = 213;
+        int [] nums = {12,28,83,4,25,26,25,2,25,25,25,12};
+        int result = minSubArrayLen_209(target, nums);
+        System.out.println("결과 = "+result);
     }
 
     private void add(char c) {
