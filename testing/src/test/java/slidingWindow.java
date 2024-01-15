@@ -76,19 +76,22 @@ public class slidingWindow {
     }
 
     public int minSubArrayLen_209(int target, int[] nums) {
-        //Arrays.sort(nums);
-        int pointer = nums.length-1;
-        int sum = nums[pointer];
-        int result;
-        while(sum<target){
-            pointer--;
-            if(pointer < 0){
-                break;
-            }
-            sum +=nums[pointer];
-        }
+        int windowSize = Integer.MAX_VALUE;
+        int leftPointer = 0;
+        int sum = 0;
 
-        return pointer<0?0:nums.length-pointer;
+        for (int rightPointer = 0; rightPointer < nums.length; rightPointer++) {
+            sum += nums[rightPointer];
+
+            while(sum>=target){
+                sum-=nums[leftPointer];
+                windowSize = Math.min(windowSize,rightPointer-leftPointer+1);
+                leftPointer++;
+            }
+        }
+        return windowSize==Integer.MAX_VALUE? 0 : windowSize;
+
+
     }
 
     @Test
