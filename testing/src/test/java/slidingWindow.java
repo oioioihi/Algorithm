@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.StringTokenizer;
 
 public class slidingWindow {
@@ -93,12 +95,38 @@ public class slidingWindow {
 
 
     }
-
     @Test
     void testing (){
         int target = 213;
         int [] nums = {12,28,83,4,25,26,25,2,25,25,25,12};
         int result = minSubArrayLen_209(target, nums);
+        System.out.println("결과 = "+result);
+    }
+
+    public int lengthOfLongestSubstring(String s) {
+
+        char[] array = s.toCharArray();
+        int leftPointer = 0;
+        HashSet<Character> set = new HashSet<>();
+        int windowSize = 0;
+        for (int rightPointer = 0; rightPointer <array.length ; rightPointer++) {
+
+            set.add(array[rightPointer]);
+            windowSize = Math.max(windowSize, rightPointer - leftPointer+1);
+            if (set.size()<=rightPointer){
+                leftPointer++;
+               windowSize=windowSize-1;
+            }
+        }
+
+        return windowSize;
+    }
+
+    @Test
+    void lengthOfLongestSubstring_testing (){
+        String input = "bbbbb";
+
+        int result = lengthOfLongestSubstring(input);
         System.out.println("결과 = "+result);
     }
 
