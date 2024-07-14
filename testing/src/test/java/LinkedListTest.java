@@ -27,7 +27,40 @@ public class LinkedListTest {
         linkedList.insertAt(2, 2);
         linkedList.insertAt(3, 3);
         linkedList.insertAt(4, 4);
+        linkedList.insertLast(5);
         linkedList.printAll();
+
+        System.out.println(" Clear ====================");
+        linkedList.clear();
+        linkedList.printAll();
+    }
+
+    @Test
+    void LinkedList_delete() {
+
+        LinkedList linkedList = new LinkedList();
+        linkedList.insertAt(0, 0);
+        linkedList.insertAt(1, 1);
+        linkedList.insertAt(2, 2);
+        linkedList.insertAt(3, 3);
+        linkedList.insertAt(4, 4);
+        linkedList.deleteAt(3);
+        linkedList.printAll();
+
+    }
+
+    @Test
+    void LinkedList_getNodeAt() {
+
+        LinkedList linkedList = new LinkedList();
+        linkedList.insertAt(0, 0);
+        linkedList.insertAt(1, 1);
+        linkedList.insertAt(2, 2);
+        linkedList.insertAt(3, 3);
+        linkedList.insertAt(4, 4);
+        Node node = linkedList.getNodeAt(5);
+        System.out.println(node.data);
+
     }
 
     static class Node {
@@ -77,6 +110,53 @@ public class LinkedListTest {
                 System.out.println(currentNode.data);
                 currentNode = currentNode.next;
             }
+        }
+
+        public void clear() {
+            this.head = null;
+            this.count = 0;
+        }
+
+        public void insertLast(int data) {
+            insertAt(this.count, data);
+        }
+
+        public Node deleteAt(int index) {
+            if (index > this.count || index < 0) {
+                throw new IllegalArgumentException();
+            }
+
+            Node currentNode = this.head;
+
+            if (index == 0) {
+                Node deleteNode = this.head;
+                this.head = deleteNode.next;
+                this.count--;
+                return deleteNode;
+            } else {
+                for (int i = 0; i < index - 1; i++) {
+                    currentNode = currentNode.next;
+                }
+                Node deleteNode = currentNode.next;
+                currentNode.next = deleteNode.next;
+                this.count--;
+                return deleteNode;
+            }
+        }
+
+        public Node deleteLast() {
+            return deleteAt(this.count - 1);
+        }
+
+        public Node getNodeAt(int index) {
+            if (index > this.count || index < 0) {
+                throw new IllegalArgumentException();
+            }
+            Node currentNode = this.head;
+            for (int i = 0; i < index - 1; i++) {
+                currentNode = currentNode.next;
+            }
+            return currentNode;
         }
     }
 
