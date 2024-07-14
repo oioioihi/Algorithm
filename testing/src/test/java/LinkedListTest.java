@@ -18,6 +18,18 @@ public class LinkedListTest {
         System.out.println(node1.next.next.data);
     }
 
+    @Test
+    void LinkedList_Insert() {
+
+        LinkedList linkedList = new LinkedList();
+        linkedList.insertAt(0, 0);
+        linkedList.insertAt(1, 1);
+        linkedList.insertAt(2, 2);
+        linkedList.insertAt(3, 3);
+        linkedList.insertAt(4, 4);
+        linkedList.printAll();
+    }
+
     static class Node {
         private int data;
         private Node next;
@@ -57,6 +69,14 @@ public class LinkedListTest {
                 currentNode.next = newNode;
             }
             this.count++;
+        }
+
+        public void printAll() {
+            Node currentNode = this.head;
+            while (currentNode != null) {
+                System.out.println(currentNode.data);
+                currentNode = currentNode.next;
+            }
         }
     }
 
