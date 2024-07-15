@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-public class LinkedListTest {
+public class MyLinkedList {
 
     @Test
     void LinkedList() {
@@ -70,6 +70,15 @@ public class LinkedListTest {
         public Node(int data) {
             this.data = data;
         }
+
+        public int getData() {
+
+            return data;
+        }
+
+        public Node getNext() {
+            return next;
+        }
     }
 
     static class LinkedList {
@@ -79,6 +88,14 @@ public class LinkedListTest {
         public LinkedList() {
             this.head = null;
             this.count = 0;
+        }
+
+        public Node getHead() {
+            return head;
+        }
+
+        public int getCount() {
+            return count;
         }
 
         public void insertAt(int index, int data) {
