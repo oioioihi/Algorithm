@@ -169,16 +169,23 @@ public class MyDoubleLinkedList {
                     this.tail = null;
                 } else { // 데이터가 2개 이상일 때
                     this.head = this.head.next;
-                    this.head.prev = null;
+                    this.head.prev = null; // 연결을 끊어줌
                 }
                 this.count--;
                 return deleteNode;
+            } else if (index == this.count - 1) {
+                Node deletedNode = this.tail;
+                this.tail.prev.next = null;
+                this.tail = this.tail.prev;
+                this.count--;
+                return deletedNode;
             } else {
                 for (int i = 0; i < index - 1; i++) {
                     currentNode = currentNode.next;
                 }
                 Node deleteNode = currentNode.next;
-                currentNode.next = deleteNode.next;
+                currentNode.next = currentNode.next.next;
+                currentNode.next.prev = currentNode;
                 this.count--;
                 return deleteNode;
             }
